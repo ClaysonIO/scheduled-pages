@@ -23,7 +23,7 @@ function App() {
   return (
     <ThemeContextProvider>
       <CssBaseline />
-      <BrowserRouter>
+      <BrowserRouter basename={"/app"}>
         <Layout>
           <Routes>
             <Route path="/" element={<ScheduleListPage />} />

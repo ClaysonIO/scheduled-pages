@@ -54,21 +54,23 @@ export default function Layout({ children }: LayoutProps) {
 
   const drawer = (
     <Box sx={{ width: 250 }} role="presentation" onClick={toggleDrawer(false)}>
-      <Box sx={{ p: 2, display: 'flex', alignItems: 'center' }}>
-        <Box 
-          component="img"
-          src={logoSvg}
-          alt="Scheduled Pages Logo"
-          sx={{ 
-            height: 32, 
-            width: 32, 
-            mr: 1.5 
-          }}
-        />
-        <Typography variant="h6" component="div">
-          Scheduled Pages
-        </Typography>
-      </Box>
+      <RouterLink to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
+        <Box sx={{ p: 2, display: 'flex', alignItems: 'center' }}>
+          <Box 
+            component="img"
+            src={"/logo.svg"}
+            alt="Scheduled Pages Logo"
+            sx={{ 
+              height: 32, 
+              width: 32, 
+              mr: 1.5 
+            }}
+          />
+          <Typography variant="h6" component="div">
+            Scheduled Pages
+          </Typography>
+        </Box>
+      </RouterLink>
       <Divider />
       <List>
         {navItems.map((item) => (
@@ -105,7 +107,8 @@ export default function Layout({ children }: LayoutProps) {
         sx={{
           background: theme.palette.mode === 'dark' 
             ? 'linear-gradient(to right, #1a237e, #283593)' 
-            : 'linear-gradient(to right, #3f51b5, #5c6bc0)'
+            : 'linear-gradient(to right, #3f51b5, #5c6bc0)',
+          borderRadius: 0
         }}
       >
         <Toolbar>
@@ -121,30 +124,33 @@ export default function Layout({ children }: LayoutProps) {
             </IconButton>
           )}
           
-          <Box 
-            component="img"
-            src={logoSvg}
-            alt="Scheduled Pages Logo"
-            sx={{ 
-              height: 40, 
-              width: 40, 
-              mr: 2 
-            }}
-          />
-          
-          <Typography
-            variant="h6"
-            component="div"
-            sx={{ 
-              flexGrow: 1,
-              fontWeight: 600,
-              letterSpacing: '0.5px',
-              display: 'flex',
-              alignItems: 'center'
-            }}
-          >
-            Scheduled Pages
-          </Typography>
+          <Box sx={{ display: 'flex', alignItems: 'center', flexGrow: 1 }}>
+            <RouterLink to="/" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none', color: 'inherit' }}>
+              <Box 
+                component="img"
+            src={"/logo.svg"}
+                alt="Scheduled Pages Logo"
+                sx={{ 
+                  height: 40, 
+                  width: 40, 
+                  mr: 2 
+                }}
+              />
+              
+              <Typography
+                variant="h6"
+                component="div"
+                sx={{ 
+                  fontWeight: 600,
+                  letterSpacing: '0.5px',
+                  display: 'flex',
+                  alignItems: 'center'
+                }}
+              >
+                Scheduled Pages
+              </Typography>
+            </RouterLink>
+          </Box>
 
           {!isMobile && (
             <Box sx={{ display: 'flex', gap: 1 }}>
