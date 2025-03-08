@@ -10,14 +10,22 @@ export interface Schedule {
   nextRun?: Date;
 }
 
+// Define the Settings interface
+export interface Settings {
+  id?: number;
+  themeMode: 'light' | 'dark';
+}
+
 // Define the database
 class ScheduleDatabase extends Dexie {
   schedules!: Table<Schedule, number>;
+  settings!: Table<Settings, number>;
 
   constructor() {
     super('ScheduleDatabase');
-    this.version(1).stores({
-      schedules: '++id, label, cronExpression'
+    this.version(2).stores({
+      schedules: '++id, label, cronExpression',
+      settings: '++id'
     });
   }
 }
@@ -43,4 +51,24 @@ export async function saveSchedule(schedule: Schedule): Promise<number> {
 // Helper function to delete a schedule
 export async function deleteSchedule(id: number): Promise<void> {
   await db.schedules.delete(id);
+}
+
+// Helper functions for settings
+export async function getSettings(): Promise<Settings | undefined> {
+  return await db.settings.get(1);
+}
+
+export async function saveSettings(settings: Settings): Promise<number> {
+  settings.id = 1; // Always use ID 1 for settings
+  return await db.settings.put(settings);
+}
+
+// Initialize default settings if none exist
+export async function initializeSettings(): Promise<void> {
+  const existingSettings = await getSettings();
+  if (!existingSettings) {
+    await saveSettings({
+      themeMode: 'light'
+    });
+  }
 }

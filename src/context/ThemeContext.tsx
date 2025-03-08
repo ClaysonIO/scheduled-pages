@@ -1,5 +1,6 @@
-import { createContext, useState, useMemo, ReactNode } from 'react';
+import { createContext, useState, useMemo, ReactNode, useEffect } from 'react';
 import { ThemeProvider, createTheme, PaletteMode } from '@mui/material';
+import { getSettings, saveSettings, initializeSettings } from '../db';
 
 // Define the context type
 interface ThemeModeContextType {
@@ -21,10 +22,33 @@ interface ThemeProviderProps {
 // Create the theme provider component
 export function ThemeContextProvider({ children }: ThemeProviderProps) {
   const [mode, setMode] = useState<PaletteMode>('light');
+  const [isInitialized, setIsInitialized] = useState(false);
+
+  // Initialize theme from database
+  useEffect(() => {
+    const loadTheme = async () => {
+      // Initialize settings if they don't exist
+      await initializeSettings();
+      
+      // Get settings from database
+      const settings = await getSettings();
+      if (settings) {
+        setMode(settings.themeMode);
+      }
+      
+      setIsInitialized(true);
+    };
+    
+    loadTheme();
+  }, []);
 
   // Toggle between light and dark mode
   const toggleThemeMode = () => {
-    setMode((prevMode) => (prevMode === 'light' ? 'dark' : 'light'));
+    const newMode = mode === 'light' ? 'dark' : 'light';
+    setMode(newMode);
+    
+    // Save to database
+    saveSettings({ themeMode: newMode });
   };
 
   // Create the context value

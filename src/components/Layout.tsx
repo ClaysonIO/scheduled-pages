@@ -27,6 +27,9 @@ import {
 } from '@mui/icons-material';
 import { ThemeModeContext } from '../context/ThemeContext';
 
+// Import logo directly
+import logoSvg from '../assets/logo.svg';
+
 interface LayoutProps {
   children: ReactNode;
 }
@@ -51,7 +54,17 @@ export default function Layout({ children }: LayoutProps) {
 
   const drawer = (
     <Box sx={{ width: 250 }} role="presentation" onClick={toggleDrawer(false)}>
-      <Box sx={{ p: 2 }}>
+      <Box sx={{ p: 2, display: 'flex', alignItems: 'center' }}>
+        <Box 
+          component="img"
+          src={logoSvg}
+          alt="Scheduled Pages Logo"
+          sx={{ 
+            height: 32, 
+            width: 32, 
+            mr: 1.5 
+          }}
+        />
         <Typography variant="h6" component="div">
           Scheduled Pages
         </Typography>
@@ -107,6 +120,17 @@ export default function Layout({ children }: LayoutProps) {
               <MenuIcon />
             </IconButton>
           )}
+          
+          <Box 
+            component="img"
+            src={logoSvg}
+            alt="Scheduled Pages Logo"
+            sx={{ 
+              height: 40, 
+              width: 40, 
+              mr: 2 
+            }}
+          />
           
           <Typography
             variant="h6"
