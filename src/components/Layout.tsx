@@ -27,8 +27,6 @@ import {
 } from '@mui/icons-material';
 import { ThemeModeContext } from '../context/ThemeContext';
 
-// Import logo directly
-import logoSvg from '../assets/logo.svg';
 
 interface LayoutProps {
   children: ReactNode;

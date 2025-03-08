@@ -119,7 +119,6 @@ export default function CronExpressionPicker({ value, onChange, error }: CronExp
     let newDay = '*';
     let newMonth = '*';
     let newDayOfWeek = '*';
-    let isCustom = false;
 
     switch (type) {
       case 'daily':
@@ -142,7 +141,6 @@ export default function CronExpressionPicker({ value, onChange, error }: CronExp
         newMonth = '1';
         break;
       case 'custom':
-        isCustom = true;
         setCustomMode(true);
         setCustomExpression(value || '* * * * *');
         return;

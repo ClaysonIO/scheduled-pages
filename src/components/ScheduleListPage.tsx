@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { 
   Button, 
@@ -14,7 +13,6 @@ import {
   Tooltip
 } from '@mui/material';
 import { Add as AddIcon, Timer as TimerIcon } from '@mui/icons-material';
-import { Schedule } from '../db';
 import { useLiveQuery } from 'dexie-react-hooks';
 import { db } from '../db';
 import { formatDateTime } from '../utils/cron';

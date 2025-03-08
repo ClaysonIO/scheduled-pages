@@ -5,8 +5,7 @@ import {
   Button,
   Typography,
   Paper,
-  Grid,
-  CircularProgress
+  Grid
 } from '@mui/material';
 import { ArrowBack as ArrowBackIcon } from '@mui/icons-material';
 import { scheduler } from '../services/scheduler';

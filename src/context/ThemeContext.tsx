@@ -22,7 +22,6 @@ interface ThemeProviderProps {
 // Create the theme provider component
 export function ThemeContextProvider({ children }: ThemeProviderProps) {
   const [mode, setMode] = useState<PaletteMode>('light');
-  const [isInitialized, setIsInitialized] = useState(false);
 
   // Initialize theme from database
   useEffect(() => {
@@ -35,8 +34,6 @@ export function ThemeContextProvider({ children }: ThemeProviderProps) {
       if (settings) {
         setMode(settings.themeMode);
       }
-      
-      setIsInitialized(true);
     };
     
     loadTheme();
