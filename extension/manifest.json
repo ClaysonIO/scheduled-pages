@@ -1,0 +1,27 @@
+{
+  "manifest_version": 3,
+  "name": "Scheduled Pages",
+  "version": "1.0.0",
+  "description": "Automatically opens pages on a schedule, even when the main application is closed",
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://scheduled-pages.clayson.io/*"],
+      "js": ["content.js"]
+    }
+  ],
+  "permissions": [
+    "storage",
+    "alarms",
+    "tabs"
+  ],
+  "host_permissions": [
+    "https://scheduled-pages.clayson.io/*"
+  ]
+}

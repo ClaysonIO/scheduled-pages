@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scheduled Pages</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      width: 300px;
+      padding: 16px;
+      margin: 0;
+    }
+    
+    .header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+    
+    .header img {
+      width: 24px;
+      height: 24px;
+      margin-right: 8px;
+    }
+    
+    .header h1 {
+      font-size: 18px;
+      margin: 0;
+    }
+    
+    .status {
+      background-color: #f5f5f5;
+      border-radius: 4px;
+      padding: 12px;
+      margin-bottom: 16px;
+    }
+    
+    .status-label {
+      font-weight: bold;
+      margin-bottom: 4px;
+    }
+    
+    .next-schedule {
+      margin-bottom: 16px;
+    }
+    
+    .schedule-item {
+      background-color: #f5f5f5;
+      border-radius: 4px;
+      padding: 12px;
+      margin-bottom: 8px;
+    }
+    
+    .schedule-label {
+      font-weight: bold;
+      margin-bottom: 4px;
+    }
+    
+    .schedule-time {
+      color: #666;
+      font-size: 14px;
+    }
+    
+    .no-schedules {
+      color: #666;
+      font-style: italic;
+    }
+    
+    .button {
+      display: block;
+      width: 100%;
+      background-color: #3F51B5;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      padding: 8px 16px;
+      font-size: 14px;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+    }
+    
+    .button:hover {
+      background-color: #303F9F;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>Scheduled Pages</h1>
+  </div>
+  
+  <div class="status">
+    <div class="status-label">Status:</div>
+    <div id="status-value">Active</div>
+  </div>
+  
+  <div class="next-schedule">
+    <div class="status-label">Next scheduled page:</div>
+    <div id="next-schedule-container">
+      <div class="no-schedules">No schedules found</div>
+    </div>
+  </div>
+  
+  <a href="https://scheduled-pages.clayson.io" target="_blank" class="button">Open Scheduled Pages</a>
+  
+  <script src="popup.js"></script>
+</body>
+</html>

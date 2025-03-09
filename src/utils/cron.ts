@@ -3,13 +3,16 @@
  */
 import {CronExpressionParser}  from 'cron-parser';
 
-// Parse a cron expression and return the next run time
+// Parse a cron expression and return the next run time (in local time)
 export function getNextRunTime(cronExpression: string): Date {
   try {
-    // Parse the cron expression
-    const interval = CronExpressionParser.parse(cronExpression);
+    // Parse the cron expression with local time option
+    const interval = CronExpressionParser.parse(cronExpression, {
+      currentDate: new Date(), // Use current local time as reference
+      tz: Intl.DateTimeFormat().resolvedOptions().timeZone // Use local timezone
+    });
     
-    // Get the next occurrence
+    // Get the next occurrence (will be in local time)
     return interval.next().toDate();
   } catch (error) {
     console.error('Error parsing cron expression:', error);
@@ -72,7 +75,11 @@ export function updateNextRunTime(cronExpression: string): Date {
 // Validate a cron expression
 export function validateCronExpression(cronExpression: string): boolean {
   try {
-    CronExpressionParser.parse(cronExpression);
+    // Use the same local time options for validation
+    CronExpressionParser.parse(cronExpression, {
+      currentDate: new Date(),
+      tz: Intl.DateTimeFormat().resolvedOptions().timeZone
+    });
     return true;
   } catch (error) {
     return false;

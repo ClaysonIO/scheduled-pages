@@ -6,9 +6,10 @@
   "scripts": {
     "dev": "vite",
     "netlify": "netlify dev",
-    "build": "tsc -b && vite build",
+    "build": "tsc -b && vite build && npm run package-extension",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "package-extension": "node package-extension.js"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
@@ -29,6 +30,7 @@
     "@types/react": "^19.0.10",
     "@types/react-dom": "^19.0.4",
     "@vitejs/plugin-react": "^4.3.4",
+    "archiver": "^6.0.2",
     "eslint": "^9.21.0",
     "eslint-plugin-react-hooks": "^5.1.0",
     "eslint-plugin-react-refresh": "^0.4.19",

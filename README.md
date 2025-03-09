@@ -9,6 +9,7 @@ A web application that automatically opens web pages at scheduled times using cr
 - **Countdown Timer**: View a countdown to the next scheduled page opening
 - **Local Storage**: All schedules are stored locally in your browser using IndexedDB
 - **No Server Required**: Runs entirely in the browser with no backend server needed
+- **Chrome Extension**: Install the Chrome extension to automatically open pages even when the main application is closed
 
 ## Use Cases
 
@@ -56,3 +57,20 @@ Examples:
 ## Browser Permissions
 
 This application requires permission to open popup windows. You may need to allow popups for the site in your browser settings.
+
+## Chrome Extension
+
+The Chrome extension allows your scheduled pages to open automatically, even when the main application is closed. All your schedules are synced with the extension, so you can manage everything from the main application.
+
+### Installing the Extension
+
+1. Visit the application at https://scheduled-pages.clayson.io
+2. Click the "Download Extension" button on the main page
+3. Unzip the downloaded file
+4. Open Chrome and go to `chrome://extensions`
+5. Enable "Developer mode" in the top right corner
+6. Click "Load unpacked" and select the unzipped folder
+
+### How It Works
+
+The extension runs in the background and checks for schedules to run, even when the main application is closed. When a schedule needs to run, it opens the specified URL in a new tab. All schedules are synced with the main application, so any changes you make in the application are automatically reflected in the extension.

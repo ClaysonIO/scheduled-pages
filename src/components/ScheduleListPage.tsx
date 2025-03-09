@@ -13,6 +13,7 @@ import {
   Tooltip
 } from '@mui/material';
 import { Add as AddIcon, Timer as TimerIcon } from '@mui/icons-material';
+import ExtensionInfo from './ExtensionInfo';
 import { useLiveQuery } from 'dexie-react-hooks';
 import { db } from '../db';
 import { formatDateTime } from '../utils/cron';
@@ -35,6 +36,8 @@ export default function ScheduleListPage() {
   
   return (
     <Box>
+      <ExtensionInfo />
+      
       <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 3 }}>
         <Button 
           component={Link} 
